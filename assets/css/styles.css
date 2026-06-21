@@ -185,12 +185,10 @@ h1,h2,h3,h4,h5{font-weight:500;line-height:1.05;letter-spacing:-.01em}
    STUDIO — editorial con imagen nítida en arco (sin fondo borroso)
    =================================================================== */
 .studio{background:var(--bg-soft);max-width:none;border-block:1px solid var(--border)}
-.studio-inner{max-width:var(--maxw);margin:0 auto;display:grid;gap:clamp(2.5rem,6vw,5rem);align-items:center}
-.studio-media{position:relative;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 60px -30px rgba(37,48,42,.45)}
-.studio-media img{width:100%;height:100%;object-fit:cover}
-.studio-quote{font-family:var(--font-display);font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.06;max-width:16ch;margin-bottom:1.2rem;color:var(--text)}
+.studio-inner{max-width:760px;margin:0 auto;text-align:center}
+.studio-quote{font-family:var(--font-display);font-size:clamp(2.4rem,7vw,4.6rem);line-height:1.06;max-width:18ch;margin:0 auto 1.2rem;color:var(--text)}
 .studio-quote em{font-style:italic;color:var(--accent)}
-.studio-sub{color:var(--text-soft);max-width:46ch;font-size:clamp(1rem,2.2vw,1.18rem)}
+.studio-sub{color:var(--text-soft);max-width:48ch;margin:0 auto;font-size:clamp(1rem,2.2vw,1.18rem)}
 
 /* Valoración */
 .valoracion{background:var(--bg);max-width:none}
@@ -239,6 +237,7 @@ h1,h2,h3,h4,h5{font-weight:500;line-height:1.05;letter-spacing:-.01em}
 /* Visítanos */
 .visitanos{max-width:none;background:var(--bg-soft);border-top:1px solid var(--border)}
 .visitanos-grid{max-width:var(--maxw);margin:0 auto;display:grid;gap:clamp(2rem,5vw,4rem)}
+.visitanos-info .display,.valoracion-text .display,.filosofia-text .display{margin-bottom:1.5rem}
 .info-block{margin-bottom:1.6rem}
 .info-block h4{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;font-weight:600}
 .info-block p{color:var(--text-soft)}
@@ -283,9 +282,8 @@ h1,h2,h3,h4,h5{font-weight:500;line-height:1.05;letter-spacing:-.01em}
   .benefits-inner{grid-template-columns:repeat(4,1fr);gap:2.2rem}
   .proceso-grid{grid-template-columns:repeat(4,1fr)}
   .intro{grid-template-columns:.85fr 1.15fr}
-  .studio-inner{grid-template-columns:.9fr 1.1fr}
   .valoracion-inner{grid-template-columns:1fr 1fr}
-  .valoracion-media,.studio-media,.intro-media,.filosofia-media{max-height:82vh}
+  .valoracion-media,.intro-media,.filosofia-media{max-height:82vh}
   .filosofia-inner{grid-template-columns:1fr 1fr}
   .visitanos-grid{grid-template-columns:1.05fr 1fr;align-items:stretch}
   .footer-cols{grid-template-columns:repeat(3,1fr)}
