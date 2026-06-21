@@ -47,7 +47,6 @@
      =================================================================== */
   const tour = $('.tour');
   const planes = $$('[data-plane]');
-  const sceneBg = $('[data-tour-bg]');
   const progressBar = $('[data-progress]');
   const SPEED = 2600;       // px de profundidad por unidad de progreso
   const last = planes.length - 1;
@@ -77,19 +76,7 @@
       plane.style.zIndex = String(Math.round(z));
     });
 
-    if (sceneBg) sceneBg.style.transform = `scale(${(1.1 + p * 0.18).toFixed(3)}) translateY(${(-p * 4).toFixed(2)}%)`;
     if (progressBar) progressBar.style.width = (p * 100).toFixed(1) + '%';
-  }
-
-  /* ---- Parallax suave (estudio) ---- */
-  const parallax = $$('[data-parallax]');
-  function renderParallax() {
-    parallax.forEach(el => {
-      const r = el.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > window.innerHeight) return;
-      const off = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
-      el.style.transform = `translateY(${(off * -7).toFixed(2)}%)`;
-    });
   }
 
   /* rAF throttle */
@@ -97,9 +84,9 @@
   function onScroll() {
     onScrollHeader();
     if (reduceMotion) return;
-    if (!ticking) { requestAnimationFrame(() => { renderTour(); renderParallax(); ticking = false; }); ticking = true; }
+    if (!ticking) { requestAnimationFrame(() => { renderTour(); ticking = false; }); ticking = true; }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', () => { if (!reduceMotion) renderTour(); }, { passive: true });
-  if (!reduceMotion) { renderTour(); renderParallax(); }
+  if (!reduceMotion) renderTour();
 })();
