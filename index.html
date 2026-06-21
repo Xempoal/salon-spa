@@ -61,7 +61,28 @@
 <!-- ===== HERO TOUR 3D ===== -->
 <section id="inicio" class="tour" aria-label="Bienvenida">
   <div class="tour-sticky">
-    <div class="tour-arches" aria-hidden="true"><span></span><span></span><span></span></div>
+    <svg class="hero-leaf hero-leaf--tl" viewBox="0 0 100 240" aria-hidden="true">
+      <path d="M50 235 C50 180 48 120 56 64 60 38 70 18 86 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <g fill="currentColor">
+        <ellipse cx="36" cy="92" rx="16" ry="7" transform="rotate(-28 36 92)"/>
+        <ellipse cx="70" cy="78" rx="16" ry="7" transform="rotate(28 70 78)"/>
+        <ellipse cx="40" cy="128" rx="15" ry="6.5" transform="rotate(-26 40 128)"/>
+        <ellipse cx="66" cy="116" rx="15" ry="6.5" transform="rotate(26 66 116)"/>
+        <ellipse cx="46" cy="162" rx="13" ry="6" transform="rotate(-24 46 162)"/>
+        <ellipse cx="62" cy="152" rx="13" ry="6" transform="rotate(24 62 152)"/>
+      </g>
+    </svg>
+    <svg class="hero-leaf hero-leaf--br" viewBox="0 0 100 240" aria-hidden="true">
+      <path d="M50 235 C50 180 48 120 56 64 60 38 70 18 86 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <g fill="currentColor">
+        <ellipse cx="36" cy="92" rx="16" ry="7" transform="rotate(-28 36 92)"/>
+        <ellipse cx="70" cy="78" rx="16" ry="7" transform="rotate(28 70 78)"/>
+        <ellipse cx="40" cy="128" rx="15" ry="6.5" transform="rotate(-26 40 128)"/>
+        <ellipse cx="66" cy="116" rx="15" ry="6.5" transform="rotate(26 66 116)"/>
+        <ellipse cx="46" cy="162" rx="13" ry="6" transform="rotate(-24 46 162)"/>
+        <ellipse cx="62" cy="152" rx="13" ry="6" transform="rotate(24 62 152)"/>
+      </g>
+    </svg>
     <div class="tour-vignette"></div>
     <div class="scene" data-scene>
 
@@ -96,13 +117,31 @@
   </div>
 </section>
 
-<!-- ===== MARQUEE ===== -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Balayage</span><span>Efectos de color</span><span>Corte de autor</span><span>Tratamientos capilares</span><span>Extensiones</span><span>Belleza consciente</span>
-    <span>Balayage</span><span>Efectos de color</span><span>Corte de autor</span><span>Tratamientos capilares</span><span>Extensiones</span><span>Belleza consciente</span>
+<!-- ===== BENEFITS ===== -->
+<section class="benefits" aria-label="Por qué elegirnos">
+  <div class="benefits-inner">
+    <div class="benefit reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
+      <h4>Cosmética consciente</h4>
+      <p>Trabajamos con líneas profesionales de alto desempeño y bajo impacto ambiental.</p>
+    </div>
+    <div class="benefit reveal d1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 2.9 6.26 6.85.59-5.2 4.51 1.57 6.7L12 16.9 5.88 20.56l1.57-6.7-5.2-4.51 6.85-.59Z"/></svg>
+      <h4>+10 años de experiencia</h4>
+      <p>Especialistas en color, balayage y tratamientos con resultados que hablan por sí solos.</p>
+    </div>
+    <div class="benefit reveal d2">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      <h4>Atención personalizada</h4>
+      <p>Cada cita inicia con una valoración para diseñar el look perfecto para ti.</p>
+    </div>
+    <div class="benefit reveal d3">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg>
+      <h4>Espacio sin juicios</h4>
+      <p>Un ambiente cálido y libre donde puedes ser completamente tú.</p>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- ===== INTRO STATEMENT ===== -->
 <section class="intro">
@@ -117,19 +156,80 @@
 </section>
 
 <!-- ===== SERVICIOS ===== -->
-<section id="servicios" class="section">
-  <div class="section-head reveal">
-    <p class="eyebrow">Carta de servicios</p>
-    <h2 class="display">El arte de transformar</h2>
-    <p class="lead">Cada servicio es una experiencia. Pigmentos de gama alta, manos expertas y atención de principio a fin.</p>
-  </div>
-  <div class="services-grid">
-    <article class="service-card reveal"><span class="service-num">01</span><h3>Balayage</h3><p>Iluminaciones a mano alzada con transiciones impecables y un efecto natural, sofisticado y duradero.</p></article>
-    <article class="service-card reveal d1"><span class="service-num">02</span><h3>Efectos de color</h3><p>Desde rubios glaciales hasta fantasías rosa. Color vibrante diseñado para destacar entre la multitud.</p></article>
-    <article class="service-card reveal d2"><span class="service-num">03</span><h3>Corte de autor</h3><p>Cortes que entienden tu rostro, tu estilo de vida y tu textura. Movimiento y forma a tu favor.</p></article>
-    <article class="service-card reveal"><span class="service-num">04</span><h3>Tratamientos capilares</h3><p>Rituales de restauración y nutrición profunda para devolver fuerza, brillo y suavidad a tu cabello.</p></article>
-    <article class="service-card reveal d1"><span class="service-num">05</span><h3>Extensiones</h3><p>Largo y volumen de aspecto natural con métodos premium, colocados con precisión milimétrica.</p></article>
-    <article class="service-card reveal d2 service-card--feature"><span class="service-num">06</span><h3>Cita de valoración</h3><p>El punto de partida de toda transformación. Un diagnóstico personal antes de cualquier servicio.</p><a href="#valoracion" class="link-accent">Saber más →</a></article>
+<section id="servicios" class="section servicios">
+  <div class="servicios-inner">
+    <div class="section-head reveal">
+      <p class="eyebrow">Carta de servicios</p>
+      <h2 class="display">El arte de transformar</h2>
+      <p class="lead">Cada servicio es una experiencia. Pigmentos de gama alta, manos expertas y atención de principio a fin.</p>
+    </div>
+    <div class="services-grid">
+
+      <article class="service-card reveal">
+        <div class="service-top">
+          <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.06 11.9 3 5.5A3 3 0 1 1 7 9l6.5 6"/><path d="M14.94 11.9 21 5.5A3 3 0 1 0 17 9l-6.5 6"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/></svg></span>
+          <span class="service-num">01</span>
+        </div>
+        <h3>Balayage</h3>
+        <p>Iluminaciones a mano alzada con transiciones impecables y un efecto natural, sofisticado y duradero.</p>
+        <div class="service-price"><span>Desde</span><strong>$1,800</strong></div>
+      </article>
+
+      <article class="service-card reveal d1">
+        <div class="service-top">
+          <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2s5 5.5 5 10a5 5 0 0 1-10 0c0-1.6.6-3.2 1.5-4.6"/><path d="M5 21h14"/></svg></span>
+          <span class="service-num">02</span>
+        </div>
+        <h3>Efectos de color</h3>
+        <p>Desde rubios glaciales hasta fantasías rosa. Color vibrante diseñado para destacar entre la multitud.</p>
+        <div class="service-price"><span>Desde</span><strong>$2,200</strong></div>
+      </article>
+
+      <article class="service-card reveal d2">
+        <div class="service-top">
+          <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"/></svg></span>
+          <span class="service-num">03</span>
+        </div>
+        <h3>Corte de autor</h3>
+        <p>Cortes que entienden tu rostro, tu estilo de vida y tu textura. Movimiento y forma a tu favor.</p>
+        <div class="service-price"><span>Desde</span><strong>$450</strong></div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-top">
+          <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C8 6 6 9 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11Z"/><path d="M12 22v-6"/></svg></span>
+          <span class="service-num">04</span>
+        </div>
+        <h3>Tratamientos capilares</h3>
+        <p>Rituales de restauración y nutrición profunda para devolver fuerza, brillo y suavidad a tu cabello.</p>
+        <div class="service-price"><span>Desde</span><strong>$650</strong></div>
+      </article>
+
+      <article class="service-card reveal d1">
+        <div class="service-top">
+          <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3c-1 4-1 8 0 18M12 3c-1 4-1 8 0 18M17 3c-1 4-1 8 0 18"/></svg></span>
+          <span class="service-num">05</span>
+        </div>
+        <h3>Extensiones</h3>
+        <p>Largo y volumen de aspecto natural con métodos premium, colocados con precisión milimétrica.</p>
+        <div class="service-price"><span>Desde</span><strong>$3,500</strong></div>
+      </article>
+
+      <article class="service-card service-card--feature reveal d2">
+        <div class="service-top">
+          <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span>
+          <span class="service-num">06</span>
+        </div>
+        <h3>Cita de valoración</h3>
+        <p>El punto de partida de toda transformación. Un diagnóstico personal antes de cualquier servicio.</p>
+        <div class="service-price"><span>Desde</span><strong>$150</strong><small>· bonificable</small></div>
+      </article>
+
+    </div>
+    <p class="services-note reveal">Precios de referencia en pesos mexicanos. El costo final se confirma en tu cita de valoración según tu cabello y el resultado deseado.</p>
+    <div class="services-cta reveal">
+      <a class="btn btn-accent" href="https://wa.me/522281215183?text=Hola%20Uriarte%20Sal%C3%B3n%2C%20quiero%20cotizar%20un%20servicio." target="_blank" rel="noopener">Cotizar mi servicio</a>
+    </div>
   </div>
 </section>
 
@@ -142,6 +242,21 @@
       <p class="studio-quote">Nuestra silla es <em>mucho más</em> que hacer cabello.</p>
       <p class="studio-sub">Es un lugar donde hablamos de la vida, tus logros y tus momentos. Un espacio de calma, diseñado al detalle, donde siempre estaremos felices de escuchar y conectar.</p>
     </div>
+  </div>
+</section>
+
+<!-- ===== PROCESO ===== -->
+<section id="proceso" class="proceso">
+  <div class="section-head reveal">
+    <p class="eyebrow">Cómo trabajamos</p>
+    <h2 class="display">Tu experiencia, paso a paso</h2>
+    <p class="lead">Un proceso pensado para que el resultado sea tuyo de principio a fin.</p>
+  </div>
+  <div class="proceso-grid">
+    <div class="paso reveal"><span class="paso-num">01</span><h4>Valoración</h4><p>Conocemos tu cabello, tu estilo de vida y lo que sueñas lograr.</p></div>
+    <div class="paso reveal d1"><span class="paso-num">02</span><h4>Diseño a tu medida</h4><p>Proponemos color, corte y tratamiento ideales para ti.</p></div>
+    <div class="paso reveal d2"><span class="paso-num">03</span><h4>Transformación</h4><p>Manos expertas y productos premium hacen la magia.</p></div>
+    <div class="paso reveal d3"><span class="paso-num">04</span><h4>Cuidado en casa</h4><p>Te llevas una rutina personalizada para mantener tu look impecable.</p></div>
   </div>
 </section>
 
