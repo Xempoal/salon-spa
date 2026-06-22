@@ -21,21 +21,22 @@
             color: #f1e9dd;
         }
 
-        /* Paleta de textos: gris metálico muy oscuro y notable, sin amarillos */
+        /* Paleta de textos: blanco brillante, sin amarillos */
         :root {
-            --color-heading: #1a1d23;
-            --color-accent: #16191e;
-            --color-body: rgba(34, 38, 45, 0.96);
-            --color-label: rgba(28, 31, 37, 0.95);
+            --color-heading: #ffffff;
+            --color-accent: #ffffff;
+            --color-body: rgba(255, 255, 255, 0.92);
+            --color-label: rgba(255, 255, 255, 0.85);
         }
 
-        /* Halo de luz detrás de TODO el texto: lo hace legible sobre el fondo oscuro
-           y sobre el cabello rubio brillante, manteniendo el color muy oscuro */
+        /* Texto blanco brillante con glow suave + sombra de contraste, legible
+           tanto sobre el fondo oscuro como sobre el cabello rubio claro */
         #scroll-container *, .site-footer *, .nav-float a, .nav-float .nav-logo {
+            color: #ffffff;
             text-shadow:
-                0 0 1px rgba(255, 255, 255, 0.85),
-                0 0 10px rgba(255, 255, 255, 0.55),
-                0 0 22px rgba(255, 255, 255, 0.35) !important;
+                0 1px 3px rgba(0, 0, 0, 0.45),
+                0 2px 16px rgba(0, 0, 0, 0.35),
+                0 0 24px rgba(255, 255, 255, 0.30) !important;
         }
 
         canvas {
