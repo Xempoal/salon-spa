@@ -21,11 +21,21 @@
             color: #f1e9dd;
         }
 
-        /* Paleta de textos: gris metálico (gunmetal) muy oscuro para contrastar con el cabello rubio */
+        /* Paleta de textos: gris metálico muy oscuro y notable, sin amarillos */
         :root {
-            --color-heading: #6a737f;
-            --color-accent: #4c545f;
-            --color-label: rgba(76, 84, 95, 0.92);
+            --color-heading: #1a1d23;
+            --color-accent: #16191e;
+            --color-body: rgba(34, 38, 45, 0.96);
+            --color-label: rgba(28, 31, 37, 0.95);
+        }
+
+        /* Halo de luz detrás de TODO el texto: lo hace legible sobre el fondo oscuro
+           y sobre el cabello rubio brillante, manteniendo el color muy oscuro */
+        #scroll-container *, .site-footer *, .nav-float a, .nav-float .nav-logo {
+            text-shadow:
+                0 0 1px rgba(255, 255, 255, 0.85),
+                0 0 10px rgba(255, 255, 255, 0.55),
+                0 0 22px rgba(255, 255, 255, 0.35) !important;
         }
 
         canvas {
