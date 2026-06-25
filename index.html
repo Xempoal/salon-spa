@@ -800,7 +800,11 @@
         } from 'three/tsl';
         import { dof } from 'three/addons/tsl/display/DepthOfFieldNode.js';
 
-        const BLADE_COUNT = 110000;
+        // Detección de móvil para aligerar la carga (GPU móvil + pantalla de alta resolución).
+        const IS_MOBILE = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
+        const BLADE_COUNT = IS_MOBILE ? 85000 : 110000;
+        // Ancho de la malla; se deriva del total para preservar la forma del campo en móvil.
+        const GRID_COLS = Math.round(Math.sqrt(BLADE_COUNT / 1.37));
         const FIELD_SIZE = 30;
         const BACKGROUND_HEX = '#0a0604';
         const GROUND_HEX = '#0a0604';
@@ -835,8 +839,10 @@
         camera.lookAt(0, 0, 0);
 
         const renderer = new THREE.WebGPURenderer({ antialias: true });
-        const isMobile = window.innerWidth < 768;
-        const maxDPR = window.innerWidth < 1200 ? 1.5 : Math.min(devicePixelRatio, 2);
+        const isMobile = IS_MOBILE;
+        // En móvil bajamos el DPR a 1.0: la pantalla es enorme y el overdraw de hebras
+        // transparentes a 1.5x es lo que más traba; el cabello es orgánico y no se nota.
+        const maxDPR = IS_MOBILE ? 1.0 : (window.innerWidth < 1200 ? 1.5 : Math.min(devicePixelRatio, 2));
         renderer.setPixelRatio(maxDPR);
         renderer.setSize(innerWidth, innerHeight);
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -899,12 +905,12 @@
 
         const computeInit = Fn(() => {
             const blade = bladeData.element(instanceIndex);
-            const col = instanceIndex.mod(283);
-            const row = instanceIndex.div(283);
+            const col = instanceIndex.mod(GRID_COLS);
+            const row = instanceIndex.div(GRID_COLS);
             const jx = hash(instanceIndex).sub(0.5);
             const jz = hash(instanceIndex.add(7919)).sub(0.5);
-            const wx = col.toFloat().add(jx).div(float(283)).sub(0.5).mul(FIELD_SIZE);
-            const wz = row.toFloat().add(jz).div(float(283)).sub(0.5).mul(FIELD_SIZE);
+            const wx = col.toFloat().add(jx).div(float(GRID_COLS)).sub(0.5).mul(FIELD_SIZE);
+            const wz = row.toFloat().add(jz).div(float(GRID_COLS)).sub(0.5).mul(FIELD_SIZE);
             blade.x.assign(wx);
             blade.y.assign(wz);
             blade.z.assign(hash(instanceIndex.add(1337)).mul(PI.mul(2)));
@@ -1122,7 +1128,7 @@
             resizeTimeout = setTimeout(() => {
                 camera.aspect = innerWidth / innerHeight;
                 camera.updateProjectionMatrix();
-                const dpr = window.innerWidth < 1200 ? 1.5 : Math.min(devicePixelRatio, 2);
+                const dpr = IS_MOBILE ? 1.0 : (window.innerWidth < 1200 ? 1.5 : Math.min(devicePixelRatio, 2));
                 renderer.setPixelRatio(dpr);
                 renderer.setSize(innerWidth, innerHeight);
             }, 100);
