@@ -804,9 +804,9 @@
         const FIELD_SIZE = 30;
         const BACKGROUND_HEX = '#0a0604';
         const GROUND_HEX = '#0a0604';
-        // Rubio claro "hair strand" palette (blonde)
-        const BLADE_BASE_HEX = '#8a6a26';
-        const BLADE_TIP_HEX = '#fdf3c2';
+        // Paleta capilar rojizo cobrizo (copper red)
+        const BLADE_BASE_HEX = '#5a1e0c';
+        const BLADE_TIP_HEX = '#f0915a';
 
         function buildSkyTexture() {
             const w = 2, h = 512;
@@ -882,10 +882,10 @@
         const fogEnd = uniform(12.0);
         const fogIntensity = uniform(1.0);
         const fogColor = uniform(new THREE.Color('#0a0604'));
-        // Rubio claro: punta platino + reflejo dorado + tono miel
-        const goldenTipColor = uniform(new THREE.Color('#fff4c4'));
-        const greenTipColor = uniform(new THREE.Color('#d8b24e'));
-        const midColor = uniform(new THREE.Color('#c79a33'));
+        // Rojizo cobrizo: reflejo cobre brillante + tono cobre medio + cobre cálido
+        const goldenTipColor = uniform(new THREE.Color('#ff9a5e'));
+        const greenTipColor = uniform(new THREE.Color('#c4501f'));
+        const midColor = uniform(new THREE.Color('#a83d18'));
 
         const focusDistanceU = uniform(31.83);
         const focalLengthU = uniform(10.0);
@@ -1000,7 +1000,7 @@
             const radial = smoothstep(float(2.0), float(11.0), dCenter); // 0 centro · 1 orilla
             // El cabello del frente (lado de la cámara, Z+) se acorta ~50% para no tapar la vista
             const frontDamp = float(1).sub(smoothstep(float(1.0), float(9.0), worldZ).mul(0.55));
-            const radialLen = float(0.4).add(radial.mul(radial).mul(3.2)).mul(frontDamp); // melena larga en costados/atrás
+            const radialLen = float(0.4).add(radial.mul(radial).mul(2.56)).mul(frontDamp); // melena larga en costados/atrás (-20% en bordes)
             const heightScale = float(0.35).add(blade.w).add(hVar).mul(boundary).mul(visible).mul(radialLen);
             const taper = float(1).sub(uv().y.mul(float(1).sub(bladeTipWidth)));
             const lx = positionGeometry.x.mul(bladeWidth).mul(taper).mul(heightScale.sign());
@@ -1160,21 +1160,21 @@
             outerStrength: { u: outerStrength,   def: 1.45 },
             camSphereRadius:   { def: 15.0 },
             camSphereStrength: { def: 5.9 },
-            bladeBaseR: { def: 0.055, isColor: 'bladeBaseColor', ch: 'r' },
+            bladeBaseR: { def: 0.353, isColor: 'bladeBaseColor', ch: 'r' },
             bladeBaseG: { def: 0.118, isColor: 'bladeBaseColor', ch: 'g' },
-            bladeBaseB: { def: 0.016, isColor: 'bladeBaseColor', ch: 'b' },
-            bladeTipR:  { def: 0.784, isColor: 'bladeTipColor', ch: 'r' },
-            bladeTipG:  { def: 0.722, isColor: 'bladeTipColor', ch: 'g' },
-            bladeTipB:  { def: 0.251, isColor: 'bladeTipColor', ch: 'b' },
-            goldenTipR: { def: 0.831, isColor: 'goldenTipColor', ch: 'r' },
-            goldenTipG: { def: 0.722, isColor: 'goldenTipColor', ch: 'g' },
-            goldenTipB: { def: 0.220, isColor: 'goldenTipColor', ch: 'b' },
-            greenTipR:  { def: 0.290, isColor: 'greenTipColor', ch: 'r' },
-            greenTipG:  { def: 0.478, isColor: 'greenTipColor', ch: 'g' },
-            greenTipB:  { def: 0.078, isColor: 'greenTipColor', ch: 'b' },
-            midR:       { def: 0.176, isColor: 'midColor', ch: 'r' },
-            midG:       { def: 0.306, isColor: 'midColor', ch: 'g' },
-            midB:       { def: 0.055, isColor: 'midColor', ch: 'b' },
+            bladeBaseB: { def: 0.047, isColor: 'bladeBaseColor', ch: 'b' },
+            bladeTipR:  { def: 0.941, isColor: 'bladeTipColor', ch: 'r' },
+            bladeTipG:  { def: 0.569, isColor: 'bladeTipColor', ch: 'g' },
+            bladeTipB:  { def: 0.353, isColor: 'bladeTipColor', ch: 'b' },
+            goldenTipR: { def: 1.000, isColor: 'goldenTipColor', ch: 'r' },
+            goldenTipG: { def: 0.604, isColor: 'goldenTipColor', ch: 'g' },
+            goldenTipB: { def: 0.369, isColor: 'goldenTipColor', ch: 'b' },
+            greenTipR:  { def: 0.769, isColor: 'greenTipColor', ch: 'r' },
+            greenTipG:  { def: 0.314, isColor: 'greenTipColor', ch: 'g' },
+            greenTipB:  { def: 0.122, isColor: 'greenTipColor', ch: 'b' },
+            midR:       { def: 0.659, isColor: 'midColor', ch: 'r' },
+            midG:       { def: 0.239, isColor: 'midColor', ch: 'g' },
+            midB:       { def: 0.094, isColor: 'midColor', ch: 'b' },
             colorVar:   { u: bladeColorVariation, def: 0.93 },
         };
 
@@ -1205,15 +1205,20 @@
             [0.28,  7.5, 10.9, 15.8,  0,   0.0,   0.7, 10.0, 1, 1,  6.0,  8.0, 5.0, 0.5, 20.0],  // Servicios
             [0.43, -8.0,  6.8, 21.6,  0,   0.2,   0,    7.0, 1, 1,  5.0, 10.0, 5.0, 0.5, 15.0],  // Stats
             [0.57, -1.0,  5.3, 25.0, -1.2, 3.0,   0,    5.0, 1, 1,  4.0, 14.0, 6.0, 1.1, 21.5],  // Quote
-            [0.78, -1.6,  2.4,  0.0, -1.2, -2.0,   0.0, 16.4, 1, 0, 20.0, 18.0, 19.0, 2.8, 12.5],  // CTA
+            [0.78, -1.6,  8.0, 12.0, -1.2,  0.5,   0.0, 14.0, 1, 1, 12.0, 14.0, 19.0, 2.8, 12.5],  // CTA
             [1.00,  0,   15.0,  0.0, -5,   3.0,  -5,    9.8, 1, 1, 13.8,  0.0, 17.5, 1.2,  9.0],  // Footer
         ];
 
         const stageParams = cameraPath.map(() => getDefaultParams());
         // Give a couple of stages distinct grass character
         stageParams[3].bladeHeight = 3.6; stageParams[3].bladeHeightVar = 1.0; stageParams[3].bladeLean = 1.4;
-        stageParams[5].fogStart = 7.0; stageParams[5].bladeHeight = 2.8; stageParams[5].bladeLean = 1.6;
-        stageParams[6].fogStart = 2.0; stageParams[6].fogEnd = 10.0; stageParams[6].bladeHeight = 3.6;
+        // De la sección de la cita (stage 4) hacia abajo: mucha más densidad y niebla
+        // más lejana para que no aparezcan huecos vacíos al hacer scroll. Además hebras
+        // más anchas y con punta menos afilada para que no se vean como rayos/picos
+        // con cuñas oscuras entre ellos, sino como una melena llena.
+        stageParams[4].grassDensity = 2.0; stageParams[4].fogStart = 12.0; stageParams[4].fogEnd = 22.0; stageParams[4].bladeWidth = 3.4; stageParams[4].bladeTipWidth = 0.34;
+        stageParams[5].grassDensity = 2.0; stageParams[5].fogStart = 12.0; stageParams[5].fogEnd = 22.0; stageParams[5].bladeHeight = 3.2; stageParams[5].bladeLean = 1.6; stageParams[5].bladeWidth = 3.6; stageParams[5].bladeTipWidth = 0.38;
+        stageParams[6].grassDensity = 2.0; stageParams[6].fogStart = 10.0; stageParams[6].fogEnd = 24.0; stageParams[6].bladeHeight = 3.6; stageParams[6].bladeWidth = 3.4; stageParams[6].bladeTipWidth = 0.34;
 
         function lerpCam(scrollT) {
             const snapThreshold = 0.005;
