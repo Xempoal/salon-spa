@@ -102,14 +102,13 @@
   .duotone>img{ width:100%; height:100%; object-fit:cover; mix-blend-mode:luminosity; filter:grayscale(1) contrast(1.08) brightness(1.04); }
   .duotone::after{ content:''; position:absolute; inset:0; background:radial-gradient(120% 90% at 60% 40%, transparent 30%, rgba(20,4,3,.66) 100%); pointer-events:none; }
 
-  /* ── HERO ─────────────────────────────────── */
+  /* ── HERO (sección fijada: el banner se agrupa, rota y abre el sitio) ── */
   .hero{ position:relative; height:100svh; min-height:560px; background:var(--maroon); overflow:hidden; }
-  .hero-media{ position:absolute; inset:-6% 0 0 0; height:112%; will-change:transform; }
-  .hero-media.duotone>img{ height:100%; }
+  /* banner centrado por GSAP (xPercent/yPercent), se colapsa en barra */
+  .hero-media{ position:absolute; left:50%; top:50%; width:100vw; height:100svh; transform:translate(-50%,-50%); overflow:hidden; z-index:1; will-change:width,height,transform; }
+  .hero-media>img{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:100vw; height:100svh; max-width:none; object-fit:cover; }
   .hero-vignette{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,4,3,.5) 0%, transparent 26%, transparent 50%, rgba(20,4,3,.82) 100%); z-index:2; pointer-events:none; }
-  .hero-inner{ position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; justify-content:space-between; padding:84px clamp(16px,4vw,40px) clamp(20px,4vw,40px); }
-  .hero-kickers{ display:flex; justify-content:space-between; color:var(--cream); opacity:0; }
-  .hero-kickers .label{ opacity:0.85; }
+  .hero-inner{ position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; justify-content:flex-end; padding:84px clamp(16px,4vw,40px) clamp(56px,9vw,96px); }
   .hero-title{ color:var(--cream); }
   .hero-title .l1{ font-size:clamp(13px,3.4vw,22px); letter-spacing:0.3em; font-family:'Inter',sans-serif; font-weight:500; text-transform:uppercase; margin-bottom:clamp(8px,1.4vw,14px); display:block; overflow:hidden; }
   .hero-title .l2{ font-size:clamp(58px,18vw,220px); color:var(--cream); display:block; }
@@ -120,23 +119,18 @@
   .hero-scroll .ln{ width:1px; height:34px; background:var(--cream); opacity:.5; animation:scrolly 1.8s ease-in-out infinite; transform-origin:top; }
   @keyframes scrolly{ 0%,100%{transform:scaleY(.4);opacity:.25;} 50%{transform:scaleY(1);opacity:.7;} }
 
-  /* ── MANIFESTO (pinned: banner → barra vertical → rota → texto → split) ── */
-  .manifesto{ background:var(--maroon); }
-  .mani-stage{ position:relative; height:100svh; overflow:hidden; background:var(--maroon); }
-  /* el banner del hero que se agrupa en una barra */
-  /* centrado vía GSAP (xPercent/yPercent) para no romper rotation */
-  .mani-banner{ position:absolute; left:50%; top:50%; width:100vw; height:100svh; overflow:hidden; background:var(--red); z-index:2; will-change:width,height,transform; }
-  .mani-banner img{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:100vw; height:100svh; max-width:none; object-fit:cover; mix-blend-mode:luminosity; filter:grayscale(1) contrast(1.08) brightness(1.04); }
-  /* texto que emerge */
-  .mani-title{ position:absolute; left:50%; top:50%; z-index:4; width:min(92vw,820px); text-align:center; color:var(--cream); pointer-events:none; }
+  /* ── EFECTO HERO: texto que emerge + split (dentro de .hero) ── */
+  /* texto "Uriarte Salón" que emerge gradualmente */
+  .mani-title{ position:absolute; left:50%; top:50%; z-index:4; width:min(92vw,820px); text-align:center; color:var(--cream); pointer-events:none; opacity:0; }
   .mani-title .label{ display:block; color:var(--red-bright); margin-bottom:clamp(14px,2vw,22px); }
   .mani-title h2{ font-size:clamp(54px,13vw,160px); line-height:0.88; }
   .mani-title p{ margin:clamp(16px,2vw,24px) auto 0; font-size:clamp(11.5px,1.4vw,14px); line-height:1.7; letter-spacing:0.06em; text-transform:uppercase; color:rgba(241,236,226,.7); max-width:46ch; }
   /* split: 2 columnas izquierda/derecha, imágenes en sentidos opuestos */
-  .mani-split{ position:absolute; inset:0; z-index:5; display:flex; }
-  .ms-col{ position:relative; flex:1; overflow:hidden; background:var(--red); }
-  .ms-col img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; mix-blend-mode:luminosity; filter:grayscale(1) contrast(1.08) brightness(1.03); will-change:transform; }
-  .ms-col::after{ content:''; position:absolute; inset:0; background:radial-gradient(120% 100% at 50% 50%, transparent 38%, rgba(20,4,3,.62)); }
+  .mani-split{ position:absolute; inset:0; z-index:5; display:flex; opacity:0; }
+  .ms-col{ position:relative; flex:1; overflow:hidden; background:var(--maroon); }
+  .ms-col img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; will-change:transform; }
+  /* leve oscurecido neutro solo para legibilidad del texto (sin tinte rojo) */
+  .ms-col::after{ content:''; position:absolute; inset:0; background:radial-gradient(125% 100% at 50% 50%, transparent 46%, rgba(0,0,0,.5)); }
   .ms-text{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:6; width:min(82vw,600px); text-align:center; color:var(--cream); font-size:clamp(12px,1.5vw,17px); line-height:1.7; letter-spacing:0.1em; text-transform:uppercase; text-shadow:0 2px 24px rgba(0,0,0,.6); }
 
   /* ── PILLARS ──────────────────────────────── */
@@ -267,7 +261,7 @@
 
   <header class="nav" id="nav">
     <nav class="nav-group left">
-      <a class="nav-link" href="#manifesto">Filosofía</a>
+      <a class="nav-link" href="#pillars">Filosofía</a>
       <a class="nav-link" href="#services">Servicios</a>
     </nav>
     <a class="nav-logo" href="#top"><b>Uriarte</b><small>Salón · Xalapa</small></a>
@@ -279,7 +273,7 @@
   </header>
 
   <div class="menu" id="menu">
-    <a href="#manifesto">Filosofía</a>
+    <a href="#pillars">Filosofía</a>
     <a href="#services">Servicios</a>
     <a href="#gallery">Galería</a>
     <a href="#contact">Visítanos</a>
@@ -290,46 +284,35 @@
   <div id="smooth-wrapper">
     <div id="smooth-content">
 
-      <!-- HERO -->
+      <!-- HERO + EFECTO (el banner se agrupa, rota y abre el sitio) -->
       <section class="hero" id="top">
-        <div class="hero-media duotone" data-speed="0.85">
+        <div class="hero-media duotone" id="heroBanner">
           <img src="assets/img/gen-hair-hero.jpg" alt="Estilista creando ondas en el salón" />
         </div>
-        <div class="hero-vignette"></div>
-        <div class="hero-inner">
-          <div class="hero-kickers" data-hero="kickers">
-            <span class="label">Salón consciente</span>
-            <span class="label">Est. Xalapa</span>
-          </div>
+        <div class="hero-vignette" id="heroVignette"></div>
+        <div class="hero-inner" id="heroInner">
           <h1 class="hero-title">
             <span class="l1" data-hero="l1">El arte de</span>
             <span class="l2 display" data-hero="title">Transformar</span>
           </h1>
+          <div class="hero-scroll" data-hero="scroll">
+            <span class="label">Desliza</span>
+            <span class="ln"></span>
+          </div>
         </div>
-        <div class="hero-scroll" data-hero="scroll">
-          <span class="label">Desliza</span>
-          <span class="ln"></span>
+
+        <!-- texto que emerge gradualmente -->
+        <div class="mani-title" id="maniTitle">
+          <span class="label">El estudio</span>
+          <h2 class="display">Uriarte Salón</h2>
+          <p>Color de autor · balayage · rituales capilares.</p>
         </div>
-      </section>
 
-      <!-- MANIFESTO -->
-      <section class="manifesto" id="manifesto">
-        <div class="mani-stage">
-          <div class="mani-banner" id="maniBanner">
-            <img src="assets/img/gen-hair-hero.jpg" alt="Salón Uriarte" />
-          </div>
-
-          <div class="mani-title" id="maniTitle">
-            <span class="label">El estudio</span>
-            <h2 class="display">Uriarte Salón</h2>
-            <p>Color de autor · balayage · rituales capilares. Belleza con conciencia en Xalapa.</p>
-          </div>
-
-          <div class="mani-split">
-            <div class="ms-col left"><img src="assets/img/gen-salon-2.jpg" alt="El estudio Uriarte" /></div>
-            <div class="ms-col right"><img src="assets/img/gen-portrait-2.jpg" alt="Color editorial" /></div>
-            <p class="ms-text" id="msText">Evocar confianza · realzar lo que ya eres · acompañarte en cada etapa. Eso es hacer cabello con conciencia.</p>
-          </div>
+        <!-- la pantalla se divide en 2: izquierda baja, derecha sube -->
+        <div class="mani-split">
+          <div class="ms-col left"><img src="assets/img/gen-salon-2.jpg" alt="El estudio Uriarte" /></div>
+          <div class="ms-col right"><img src="assets/img/gen-portrait-2.jpg" alt="Color editorial" /></div>
+          <p class="ms-text" id="msText">Evocar confianza · realzar lo que ya eres · acompañarte en cada etapa. Eso es hacer cabello con conciencia.</p>
         </div>
       </section>
 
@@ -410,10 +393,10 @@
           <span class="label">Trabajos · Xalapa</span>
         </div>
         <div class="gx">
-          <figure class="gx-fig gx-a duotone"><img src="assets/img/work-1.jpg" alt="Balayage" data-speed="1.08"><figcaption><span class="label">Balayage de autor</span></figcaption></figure>
+          <figure class="gx-fig gx-a"><img src="assets/img/work-1.jpg" alt="Balayage" data-speed="1.08"><figcaption><span class="label">Balayage de autor</span></figcaption></figure>
           <figure class="gx-fig gx-b"><img src="assets/img/gen-portrait-2.jpg" alt="Editorial" data-speed="1.12"><figcaption><span class="label">Textura natural</span></figcaption></figure>
           <figure class="gx-fig gx-c"><img src="assets/img/work-2.jpg" alt="Ondas" data-speed="1.1"><figcaption><span class="label">Color &amp; movimiento</span></figcaption></figure>
-          <figure class="gx-fig gx-d duotone"><img src="assets/img/gen-hero.jpg" alt="El estudio" data-speed="1.06"><figcaption><span class="label">El estudio · Indeco Animas</span></figcaption></figure>
+          <figure class="gx-fig gx-d"><img src="assets/img/gen-hero.jpg" alt="El estudio" data-speed="1.06"><figcaption><span class="label">El estudio · Indeco Animas</span></figcaption></figure>
         </div>
       </section>
 
@@ -531,44 +514,44 @@
       const tlHero = gsap.timeline({ defaults:{ ease:'power4.out' } });
       tlHero.from(heroSplit.chars, { yPercent:115, duration:1.1, stagger:0.045 }, 0.15)
             .from('[data-hero="l1"]', { yPercent:120, opacity:0, duration:0.9 }, 0.25)
-            .to('[data-hero="kickers"]', { opacity:1, duration:0.8 }, 0.5)
             .to('[data-hero="scroll"]', { opacity:1, duration:0.8 }, 0.7);
 
-      // hero parallax title up on scroll
-      gsap.to('.hero-title', { yPercent:-40, opacity:0.2, ease:'none',
-        scrollTrigger:{ trigger:'.hero', start:'top top', end:'bottom top', scrub:true } });
-
-      // ── MANIFESTO: banner se agrupa → barra vertical → rota horizontal → texto → split ──
+      // ── EFECTO HERO (todo sobre el banner real, fijado): el banner se agrupa
+      //    en barra vertical → rota a horizontal → emerge "Uriarte Salón" gradual
+      //    → la pantalla se divide en 2 (izq baja, der sube) con texto importante ──
       const barTallPx = window.innerHeight * 0.64;
       // estados iniciales (centrado por GSAP para no romper rotation)
-      gsap.set('#maniBanner', { xPercent:-50, yPercent:-50 });
+      gsap.set('#heroBanner', { xPercent:-50, yPercent:-50 });
       gsap.set('#maniTitle', { xPercent:-50, yPercent:-50, autoAlpha:0, y:40 });
       gsap.set('.mani-split', { autoAlpha:0 });
       gsap.set('.ms-col.left img',  { yPercent:-101 });   // entra desde arriba
       gsap.set('.ms-col.right img', { yPercent:101 });    // entra desde abajo
       gsap.set('#msText', { autoAlpha:0 });
 
-      const tlMani = gsap.timeline({
-        scrollTrigger:{ trigger:'.manifesto', start:'top top', end:'+=340%', pin:true, scrub:1 }
+      const tlHeroFx = gsap.timeline({
+        scrollTrigger:{ trigger:'.hero', start:'top top', end:'+=420%', pin:true, scrub:1 }
       });
-      tlMani
+      tlHeroFx
+        // 0 · el titular y la viñeta del hero se desvanecen
+        .to('#heroInner',   { autoAlpha:0, duration:0.5 }, 0)
+        .to('#heroVignette',{ autoAlpha:0, duration:0.5 }, 0)
         // 1 · el banner se agrupa hasta hacerse una barra vertical
-        .to('#maniBanner', { width:14, height:barTallPx, duration:1.2, ease:'power2.inOut' }, 0)
+        .to('#heroBanner', { width:14, height:barTallPx, duration:1.6, ease:'power2.inOut' }, 0.2)
         // la imagen se desvanece dejando la barra roja sólida
-        .to('#maniBanner img', { opacity:0, duration:0.3 }, '>-0.3')
+        .to('#heroBanner img', { opacity:0, duration:0.4 }, '>-0.4')
         // 2 · de repente rota a horizontal
-        .to('#maniBanner', { rotation:90, duration:0.55, ease:'power3.inOut' })
-        // 3 · la barra se oculta y emerge el texto "Uriarte Salón"
-        .to('#maniBanner', { autoAlpha:0, duration:0.3 })
-        .to('#maniTitle', { autoAlpha:1, y:0, duration:0.7, ease:'power3.out' }, '-=0.15')
-        .to({}, { duration:0.5 })   // mantener el título un momento
-        // 4 · la pantalla se divide en 2 (izq/der), imágenes en sentidos opuestos
-        .to('#maniTitle', { autoAlpha:0, y:-30, duration:0.5 })
+        .to('#heroBanner', { rotation:90, duration:0.6, ease:'power3.inOut' })
+        // 3 · la barra se oculta y emerge el texto "Uriarte Salón" (gradual, lineal)
+        .to('#heroBanner', { autoAlpha:0, duration:0.4 })
+        .fromTo('#maniTitle', { autoAlpha:0, y:40 }, { autoAlpha:1, y:0, duration:1.4, ease:'none' }, '-=0.2')
+        .to({}, { duration:0.6 })   // mantener el título un momento
+        // 4 · la pantalla se divide en 2 (izq baja, der sube)
+        .to('#maniTitle', { autoAlpha:0, y:-30, duration:0.6 })
         .set('.mani-split', { autoAlpha:1 })
-        .to('.ms-col.left img',  { yPercent:0, duration:1.3, ease:'power3.inOut' })
-        .to('.ms-col.right img', { yPercent:0, duration:1.3, ease:'power3.inOut' }, '<')
+        .to('.ms-col.left img',  { yPercent:0, duration:1.5, ease:'power3.inOut' })
+        .to('.ms-col.right img', { yPercent:0, duration:1.5, ease:'power3.inOut' }, '<')
         // 5 · aparece el texto importante
-        .to('#msText', { autoAlpha:1, duration:0.6, ease:'power2.out' }, '-=0.5');
+        .to('#msText', { autoAlpha:1, duration:0.7, ease:'power2.out' }, '-=0.6');
 
       // ── PILLARS ghost text + big words ──────────
       gsap.to('#ghost', { xPercent:-35, ease:'none',
