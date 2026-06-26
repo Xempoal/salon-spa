@@ -1,6 +1,6 @@
-# Uriarte Salón — sitio web
+# Aurora Salón — sitio web
 
-Sitio estático (HTML/CSS/JS, sin build) para **Uriarte Salón** — salón consciente en
+Sitio estático (HTML/CSS/JS, sin build) para **Aurora Salón** — salón consciente en
 Xalapa: balayage, efectos de color, corte, tratamientos capilares y extensiones.
 
 Diseño premium dark + dorado, **mobile-first**, con un tour 3D en el banner que avanza
@@ -39,6 +39,6 @@ npx serve .
 
 ## Contacto del negocio
 
-- WhatsApp / Tel: 228 121 5183
-- Instagram: [@uriartesalon](https://instagram.com/uriartesalon)
-- Av. Araucarias 967, Indeco Animas, 91190 Xalapa-Enríquez, Ver.
+- WhatsApp / Tel: 228 145 6070
+- Instagram: [@aurorasalon](https://instagram.com/aurorasalon)
+- Av. Murillo Vidal 312, Fracc. Pomona, 91040 Xalapa-Enríquez, Ver.
