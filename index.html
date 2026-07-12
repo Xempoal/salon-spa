@@ -147,8 +147,16 @@
   .sec-head{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:clamp(36px,5vw,70px); border-bottom:1px solid rgba(22,18,16,.16); padding-bottom:20px; }
   .sec-head h2{ font-size:clamp(40px,8vw,110px); color:var(--ink); line-height:0.9; }
   .sec-head .label{ color:var(--red); }
-  .svc-group{ font-family:'Anton',Impact,sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(24px,3.6vw,44px); color:var(--red); margin-top:clamp(44px,6vw,80px); padding-bottom:10px; border-bottom:2px solid var(--red); }
-  .svc-group:first-of-type{ margin-top:0; }
+  .svc-tabs{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:clamp(26px,4vw,44px); }
+  .svc-tab{
+    font-family:'Anton',Impact,sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:0.06em;
+    font-size:clamp(15px,2.2vw,22px); color:var(--ink); background:transparent; border:1px solid rgba(22,18,16,.35);
+    padding:12px 26px; border-radius:40px; cursor:pointer; transition:background .3s, color .3s, border-color .3s;
+  }
+  .svc-tab:hover{ border-color:var(--red); color:var(--red); }
+  .svc-tab.is-active{ background:var(--red); border-color:var(--red); color:var(--cream); }
+  .svc-panel{ display:none; }
+  .svc-panel.is-active{ display:block; }
   .svc-row{
     display:grid; grid-template-columns:1fr auto; gap:clamp(12px,3vw,40px); align-items:center;
     padding:clamp(20px,3vw,34px) clamp(14px,2vw,26px); border-bottom:1px solid rgba(22,18,16,.14);
@@ -233,6 +241,9 @@
     .nav-group{ display:none; }
     .nav-logo{ justify-self:start; text-align:left; }
     .nav-burger{ display:block; }
+    /* en móvil el titular no debe tapar el indicador "Desliza" */
+    .hero-title .l2{ font-size:clamp(44px,13vw,90px); }
+    .hero-inner{ padding-bottom:118px; }
     .mani-title h2{ font-size:clamp(48px,15vw,120px); }
     .pillars-grid{ grid-template-columns:1fr 1fr; gap:30px 24px; }
     .gx-a{ grid-column:1/13; aspect-ratio:4/3; }
@@ -309,8 +320,8 @@
 
         <!-- la pantalla se divide en 2: izquierda baja, derecha sube -->
         <div class="mani-split">
-          <div class="ms-col left"><img src="assets/img/lunea-salon-1.jpg" alt="Estaciones de manicure · Lunéa Nails Salón" /></div>
-          <div class="ms-col right"><img src="assets/img/lunea-salon-2.jpg" alt="Interior con logotipo · Lunéa Nails Salón" /></div>
+          <div class="ms-col left"><picture><source media="(max-width:860px)" srcset="assets/img/lunea-salon-1-movil.jpg" /><img src="assets/img/lunea-salon-1.jpg" alt="Estaciones de manicure · Lunéa Nails Salón" /></picture></div>
+          <div class="ms-col right"><picture><source media="(max-width:860px)" srcset="assets/img/lunea-salon-2-movil.jpg" /><img src="assets/img/lunea-salon-2.jpg" alt="Interior con logotipo · Lunéa Nails Salón" /></picture></div>
           <p class="ms-text" id="msText">Amor, cuidado y estilo para tus uñas. Cada detalle de nuestro espacio pensado para consentirte, con café en mano.</p>
         </div>
       </section>
@@ -353,7 +364,13 @@
           <span class="label">Manos · Pies · Paquetes</span>
         </div>
 
-        <h3 class="svc-group">Manos</h3>
+        <div class="svc-tabs" id="svcTabs">
+          <button class="svc-tab is-active" data-tab="manos" type="button">Manos</button>
+          <button class="svc-tab" data-tab="pies" type="button">Pies</button>
+          <button class="svc-tab" data-tab="paquetes" type="button">Paquetes</button>
+        </div>
+
+        <div class="svc-panel is-active" id="svc-manos">
         <div class="svc-row">
           <div class="svc-main"><h3>Manicure clásico</h3><p>Limpieza, limado, corte de cutícula, estructura de la uña y crema humectante.</p></div>
           <div class="svc-price">$130</div>
@@ -431,7 +448,9 @@
           <div class="svc-price">$50</div>
         </div>
 
-        <h3 class="svc-group">Pies</h3>
+        </div>
+
+        <div class="svc-panel" id="svc-pies">
         <div class="svc-row">
           <div class="svc-main"><h3>Pedicure spa con masaje relajante</h3><p>Corte de cutícula y uñas, remoción de piel muerta, pulido de talones, exfoliante, mascarilla y crema hidratante.</p></div>
           <div class="svc-price">$350</div>
@@ -465,7 +484,9 @@
           <div class="svc-price">$70</div>
         </div>
 
-        <h3 class="svc-group">Paquetes</h3>
+        </div>
+
+        <div class="svc-panel" id="svc-paquetes">
         <div class="svc-row">
           <div class="svc-main"><h3>Manicure + gel</h3></div>
           <div class="svc-price">$250</div>
@@ -497,6 +518,7 @@
         <div class="svc-row">
           <div class="svc-main"><h3>Pedicure + gel</h3></div>
           <div class="svc-price">$450</div>
+        </div>
         </div>
       </section>
 
@@ -580,6 +602,14 @@
     const menu = document.getElementById('menu');
     burger.addEventListener('click', () => document.body.classList.toggle('menu-open'));
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('menu-open')));
+
+    // ── Pestañas de servicios (Manos / Pies / Paquetes) ──
+    const svcTabs = document.querySelectorAll('.svc-tab');
+    svcTabs.forEach(btn => btn.addEventListener('click', () => {
+      svcTabs.forEach(b => b.classList.toggle('is-active', b === btn));
+      document.querySelectorAll('.svc-panel').forEach(p => p.classList.toggle('is-active', p.id === 'svc-' + btn.dataset.tab));
+      if (window.ScrollTrigger) ScrollTrigger.refresh();
+    }));
 
     function initGSAP(){
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
