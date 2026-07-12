@@ -1,7 +1,7 @@
-# Aurora Salón — sitio web
+# Glossy Glow Studio — sitio web
 
-Sitio estático (HTML/CSS/JS, sin build) para **Aurora Salón** — salón consciente en
-Xalapa: balayage, efectos de color, corte, tratamientos capilares y extensiones.
+Sitio estático (HTML/CSS/JS, sin build) para **Glossy Glow Studio** — estudio de belleza en
+Xalapa: alaciados orgánicos libres de vapores tóxicos, rutinas curly, tratamientos capilares y nails.
 
 Diseño premium dark + dorado, **mobile-first**, con un tour 3D en el banner que avanza
 por el estudio mientras haces scroll. Construido siguiendo los principios de UX/UI
@@ -39,6 +39,8 @@ npx serve .
 
 ## Contacto del negocio
 
-- WhatsApp / Tel: 228 145 6070
-- Instagram: [@aurorasalon](https://instagram.com/aurorasalon)
-- Av. Murillo Vidal 312, Fracc. Pomona, 91040 Xalapa-Enríquez, Ver.
+- WhatsApp (previa cita, solo por WhatsApp): 228 235 3941 — [wa.me/522282353941](https://wa.me/522282353941)
+- Instagram: [@glossyglowstudio.mx](https://instagram.com/glossyglowstudio.mx)
+- Facebook: Glossy Glow Studio
+- Av. Araucarias, Xalapa-Enríquez, Ver.
+- Horario: Lun–Sáb · 10:00–19:00
