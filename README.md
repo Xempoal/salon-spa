@@ -1,7 +1,7 @@
-# Glossy Glow Studio — sitio web
+# Lunéa Nails Salón — sitio web
 
-Sitio estático (HTML/CSS/JS, sin build) para **Glossy Glow Studio** — estudio de belleza en
-Xalapa: alaciados orgánicos libres de vapores tóxicos, rutinas curly, tratamientos capilares y nails.
+Sitio estático (HTML/CSS/JS, sin build) para **Lunéa Nails Salón** — nails & coffee bar en
+Xalapa: manicure, pedicure, gel, acrílico y paquetes, con personal certificado.
 
 Diseño premium dark + dorado, **mobile-first**, con un tour 3D en el banner que avanza
 por el estudio mientras haces scroll. Construido siguiendo los principios de UX/UI
@@ -39,8 +39,6 @@ npx serve .
 
 ## Contacto del negocio
 
-- WhatsApp (previa cita, solo por WhatsApp): 228 235 3941 — [wa.me/522282353941](https://wa.me/522282353941)
-- Instagram: [@glossyglowstudio.mx](https://instagram.com/glossyglowstudio.mx)
-- Facebook: Glossy Glow Studio
-- Av. Araucarias, Xalapa-Enríquez, Ver.
-- Horario: Lun–Sáb · 10:00–19:00
+- WhatsApp: 228 407 8002 — [wa.me/522284078002](https://wa.me/522284078002)
+- Instagram: [@luneanails.xal](https://instagram.com/luneanails.xal)
+- Rocallosas no. 13, Cumbres, Xalapa-Enríquez, Ver.
